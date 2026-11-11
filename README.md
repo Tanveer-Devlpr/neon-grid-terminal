@@ -1,81 +1,61 @@
 # NEON//GRID · Symbiote Terminal
 
-A vivid, **three-pane cyberpunk theme for Windows Terminal**, with 4K neon artwork, a real interactive PowerShell command area, and an optional [Desktop Commander Remote](https://desktopcommander.app/) launcher. The decorative status panels are intentionally static, so the design stays smooth and doesn't compete with your commands.
+**A 4K cyberpunk theme for Windows Terminal** with a clean three-pane dashboard and a fully interactive PowerShell console. Beautiful, static artwork means no stuttering animations or heavy telemetry processes.
 
-![Upper neon dashboard](assets/hud.png)
+![NEON GRID dashboard](assets/hud.png)
 
-### Install in one command
+## Install with one command
 
-Open **Windows PowerShell** and run:
+Open **Windows PowerShell** and paste:
 
 ```powershell
 irm https://raw.githubusercontent.com/Tanveer-Devlpr/neon-grid-terminal/main/install.ps1 | iex
 ```
 
-The installer downloads the open-source package, backs up your existing Windows Terminal settings, adds NEON//GRID profiles and color schemes, and sets the new shell as default. If Windows Terminal is missing, it attempts to install it via `winget`. It never adds a global PowerShell profile or takes over your existing Desktop Commander session.
+Windows Terminal will open NEON//GRID automatically. The one-command installer adds only four profiles required for the three-pane layout, backs up current settings, and makes the NEON shell the default. It does not replace unrelated profiles or add global PowerShell startup hooks.
 
-**Supported:** Windows 10/11, PowerShell 5.1+, Windows Terminal, and an internet connection for the one-command installer. You do **not** need administrator privileges when Windows Terminal and its dependencies are already installed. Some Windows/enterprise policies or `winget` installations may require confirmation or prevent automatic setup.
+**Requirements:** Windows 10/11, Windows PowerShell 5.1+, and an internet connection. Windows Terminal is installed via `winget` when available and absent. Installation can be restricted by device policies or software availability.
 
-### Layout
+## The three-pane design
 
-| Area | Behavior |
+| Area | Content |
 | --- | --- |
-| Upper telemetry / Nexus Core / globe | Static, high-resolution artwork |
-| Lower-left NEON//SHELL | **Actual PowerShell terminal**, interactive and scrollable |
-| Lower-right hacker / watch | Static, high-resolution artwork |
-| Optional remote layout | Runs Desktop Commander Remote, or reuses an existing connection |
+| Upper | Static telemetry-style art, Nexus Core and neon orbital Earth |
+| Lower left | Real interactive PowerShell command pane |
+| Lower right | Static illustrated watch/hacker artwork |
 
-![Interactive console frame](assets/shell.png)
+![PowerShell command pane](assets/shell.png)
 
-![Hooded watch panel](assets/watch.png)
+![Neon watch artwork](assets/watch.png)
 
-### Open / control
+### Customize
 
-- Open a new Windows Terminal tab. **NEON GRID // SHELL** is the default.
-- Select **NEON GRID // REMOTE** from the Terminal profiles menu for the remote layout.
-- **Ctrl+Alt+R** opens the remote tab when that shortcut isn't already assigned to something else.
-- Type `neon-remote` in a NEON terminal to open the remote layout.
-- Type `neon-remote-status` to check for Desktop Commander processes.
-- To customize the command-pane breathing room, change its `padding` values in Terminal Settings. The default is **75, 95, 70, 80** (left, top, right, bottom).
+Open Windows Terminal settings and locate **NEON GRID SHELL COMMAND**. Its `padding` setting controls the spacing between live command output and the neon frame.
 
-Desktop Commander is **optional**. For remote capability, install [Node.js](https://nodejs.org/) and complete Desktop Commander's own sign-in / permissions setup. The installer does not bundle credentials and never grants remote control by itself.
+Default padding: `75, 95, 70, 80` (left, top, right, bottom).
 
-### Images and accuracy
+All three images are bundled. There is no additional remote-access software, login, or service.
 
-The package ships three final assets:
+### Update
 
-- `assets/hud.png` — 3840 × 801 upper dashboard.
-- `assets/shell.png` — 3840 × 1920 console frame.
-- `assets/watch.png` — 3072 × 3839 watch artwork.
+Run the same one-command installer again. Profiles update without duplication, with settings backed up first. Upgrading from v1.0.0 automatically removes its discontinued optional profiles and shortcut.
 
-The images are upscaled originals. Upscaling increases pixel dimensions, not native fine detail.
-
-**Important:** CPU, RAM, node, orbit, session status, and connection labels drawn *inside the artwork* are fictional/decorative, not real measurements or a guarantee that a remote session is connected. The command output is real.
-
-### Updates and removal
-
-Re-run the same one-line installer to update. Existing Windows Terminal settings are backed up again before an update; unrelated profiles are preserved. An assigned Ctrl+Alt+R shortcut belonging to another app/profile is never overwritten.
-
-To remove the NEON//GRID Terminal profiles and restore your previous default:
+### Uninstall
 
 ```powershell
 & "$env:LOCALAPPDATA\Programs\NeonGridTerminal\scripts\Uninstall.ps1"
 ```
 
-The uninstaller intentionally leaves the package files and backups on disk for recovery. You can delete `%LOCALAPPDATA%\Programs\NeonGridTerminal` once your old NEON tabs are closed.
+This removes NEON//GRID community profiles and restores the saved previous default. It leaves backups and files in place for recovery. You can delete `%LOCALAPPDATA%\Programs\NeonGridTerminal` after closing its open Terminal tabs.
 
-### Safety and privacy
+### Notes
 
-- Source code and exact artwork are public and inspectable before running the installer.
-- The PowerShell one-liner executes code fetched over HTTPS. Review [install.ps1](install.ps1) first if you prefer.
-- The installer writes only to its user-local package folder and the current user's Windows Terminal settings. It creates timestamped backups.
-- It does **not** upload logs, scan user files, ask for passwords, or bundle local access tokens.
-- Existing Windows Terminal profiles are not removed.
+Images are high-quality upscaled artwork; increasing image dimensions does not invent native resolution detail. All displayed CPU, RAM, node, orbit, and connection/status labels **inside the artwork are decorative**, not readings from your computer.
 
-### Development
+### Security
 
-All installer/runtime scripts target **Windows PowerShell 5.1+**. The repo includes smoke tests designed to run with isolated settings rather than overwriting a developer's live configuration.
+Inspect [install.ps1](install.ps1) before using any `irm ... | iex` command. The installer writes to the current user's Windows Terminal configuration and a folder under the current user's `%LOCALAPPDATA%`. It saves backups before writing and does not collect or upload personal data.
 
 ### License
 
-MIT, including redistributed original AI-generated theme artwork to the extent applicable rights are held by the project author. See [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE).

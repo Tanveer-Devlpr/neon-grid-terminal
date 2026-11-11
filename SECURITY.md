@@ -1,7 +1,9 @@
 # Security and installation
 
-The one-line command `irm https://raw.githubusercontent.com/Tanveer-Devlpr/neon-grid-terminal/main/install.ps1 | iex` runs a remotely retrieved PowerShell script. **Review the source before executing it.** Prefer the repository's versioned release archive for auditable installs.
+NEON//GRID Community is a decorative Windows Terminal theme. It does not contain remote-control functionality, authentication, or bundled access credentials.
 
-The installer modifies only your current-user Windows Terminal settings and creates `%LOCALAPPDATA%\Programs\NeonGridTerminal`. Existing Terminal settings are backed up before modification.
+The installer modifies the current user's Windows Terminal settings and installs into `%LOCALAPPDATA%\Programs\NeonGridTerminal`. Previous settings are backed up before modification.
 
-The optional Desktop Commander integration does not embed any authentication credentials, does not auto-approve device access, and does not run until you choose the remote profile. Report security issues privately to the repository maintainer rather than posting secrets in public issues.
+The one-line command retrieves and executes a PowerShell script from GitHub. Review [install.ps1](install.ps1) before running it, or download the versioned ZIP release and inspect it offline.
+
+Report security issues privately to the repository maintainer, not in public issues containing secrets.
