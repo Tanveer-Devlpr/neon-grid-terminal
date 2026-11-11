@@ -1,0 +1,14 @@
+# Generated / local state
+dist/
+*.zip
+*.log
+*.ready
+install-state.json
+*.bak
+backups/
+.env
+.env.*
+.idea/
+.vscode/
+Thumbs.db
+desktop.ini
